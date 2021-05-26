@@ -2,7 +2,6 @@
 pragma solidity ^0.8.4;
 pragma abicoder v2;
 
-
 // Estrutura da colheita/safra
 struct Harvest{
     // Valor em wei
@@ -35,11 +34,13 @@ contract Farm{
         uint _price,
         uint _size,
         uint64 _timestamp
-    ) public {
+    ) public checkOwner {
+        // Harvest memory aux = Harvest(_price, _size, _timestamp, address(0));
+        // harvests.push(aux);
         harvests.push(Harvest(_price, _size, _timestamp, address(0)));
     }
     // Compra lote
-    function buyHarvest(uint position) public payable checkOwner {
+    function buyHarvest(uint position) public payable {
         require(harvests[position].owner == address(0), "ops esse lote ja foi adquirido");
         require(msg.value == harvests[position].price, "Ops valor enviado diferente do lote");
         harvests[position].owner = msg.sender;
