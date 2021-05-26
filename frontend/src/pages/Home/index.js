@@ -177,17 +177,16 @@ function Home() {
           <br />
           <br />
           <button type="submit">Cadastrar</button>
+          {loadingInsertHarvests ? (
+            <h5>Processando cadastro de lote...</h5>
+          ) : (
+            <>
+              <br />
+              <br />
+            </>
+          )}
         </div>
       </form>
-
-      {loadingInsertHarvests ? (
-        <h5>Processando cadastro de lote...</h5>
-      ) : (
-        <>
-          <br />
-          <br />
-        </>
-      )}
 
       <div className="divider" />
       <form onSubmit={handleBuyHarvest}>
@@ -202,16 +201,16 @@ function Home() {
           <br />
 
           <button type="submit">Comprar</button>
+          {loadingBuyHarvests ? (
+            <h5>Processando compra de lote...</h5>
+          ) : (
+            <>
+              <br />
+              <br />
+            </>
+          )}
         </div>
       </form>
-      {loadingBuyHarvests ? (
-        <h5>Processando compra de lote...</h5>
-      ) : (
-        <>
-          <br />
-          <br />
-        </>
-      )}
       <div className="divider" />
       <form onSubmit={handleSearchHarvest}>
         <div className="content">
